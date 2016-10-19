@@ -1,17 +1,28 @@
 # -*- coding: utf-8 -*-
 
+import io
 from setuptools import setup
+import sys
 
 requires = ['Django >= 1.4', 'six>=1.4.1']
 tests_require = requires
+
+
+def _read_file_py2_compat(filename):
+    # Return str (bytestring) on Python 2, str (unicode string) on Python 3.
+    # Assumes the file is encoded with utf-8.
+    if sys.version_info < (3,):
+        return open(filename).read()
+    return io.open(filename, encoding='utf-8').read()
+
 
 setup(
     name="dj-inmemorystorage",
     description="A non-persistent in-memory data storage backend for Django.",
     version="1.4.0",
     url="https://github.com/waveaccounting/dj-inmemorystorage",
-    license=open('LICENSE').read(),
-    long_description=open('README.rst').read(),
+    license=_read_file_py2_compat('LICENSE'),
+    long_description=_read_file_py2_compat('README.rst'),
     author='Cody Soyland, Seán Hayes, Tore Birkeland, Nick Presta',
     author_email='opensource@waveapps.com',
     packages=[
