@@ -19,7 +19,7 @@ def _read_file_py2_compat(filename):
 setup(
     name="dj-inmemorystorage",
     description="A non-persistent in-memory data storage backend for Django.",
-    version="1.4.0",
+    version="1.4.1",
     url="https://github.com/waveaccounting/dj-inmemorystorage",
     license=_read_file_py2_compat('LICENSE'),
     long_description=_read_file_py2_compat('README.rst'),
