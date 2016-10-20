@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import io
 from setuptools import setup
 import sys
 
@@ -13,7 +12,7 @@ def _read_file_py2_compat(filename):
     # Assumes the file is encoded with utf-8.
     if sys.version_info < (3,):
         return open(filename).read()
-    return io.open(filename, encoding='utf-8').read()
+    return open(filename, encoding='utf-8').read()
 
 
 setup(
